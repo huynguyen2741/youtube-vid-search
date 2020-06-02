@@ -5,7 +5,7 @@ import VideoItem from './VideoItem';
 const VideoList = ({vids,selectVideo}) => {
     console.log(vids);
     if (vids.length <= 0) {
-        return (<p>Loading</p>);
+        return (<p>Please enter some search input in the search bar</p>);
     }
 
     const vid_list = vids.map(vid => {

@@ -5,12 +5,13 @@ import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetial';
 
+import './App.css';
+
 require('dotenv').config();
 console.log(process.env);
 
 class App extends Component {
-    // TODO:       
-    //      VideoDetail, 
+    // TODO
     //      Comment
     state = {videos: [],selectedVideo: null};
 
@@ -49,17 +50,39 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state.videos);
+        // console.log(this.state.videos);
         return (
-            <div>
-                <div className="ui container">
-                    <SearchBar termSubmit={this.termSubmit} />
+            <div className="main-content">
+                <div className="ui grid">
+                    <div className="ui row heading">
+                        <div className="three wide column">
+                            <div className="home icon">
+                                <button className="ui button">Youtube-clone</button>
+                            </div>
+                        </div>
+                        <div className="ten wide column">
+                            <SearchBar termSubmit={this.termSubmit} />
+                        </div>
+                        <div className="three wide column">
+                            <div className="utilies">
+                                <div className="ui avatar">
+                                    Sample account.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="ui row content">
+                        <div className="eleven wide column">
+                            <VideoDetail selectedVid={this.state.selectedVideo} />
+                        </div>
+                        <div className="five wide column">
+                            <VideoList vids={this.state.videos} selectVideo={this.selectVideo} />
+                        </div>
+
+                    </div>
                 </div>
-                <div className="content">
-                    <VideoDetail selectedVid={this.state.selectedVideo} />
-                    <VideoList vids={this.state.videos} selectVideo={this.selectVideo} />
-                </div>
-            </div>
+            </div >
         );
     }
 }
