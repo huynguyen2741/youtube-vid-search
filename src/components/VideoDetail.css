@@ -5,3 +5,12 @@
 .video-detail {
     padding-left: 1em;
 }
+
+.comment {
+    display: flex;
+}
+
+.comment>img {
+    max-width: 200px;
+    max-height: 50px;
+}

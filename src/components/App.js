@@ -12,7 +12,8 @@ console.log(process.env);
 
 class App extends Component {
     // TODO
-    //      Comment
+    //      Comment -> Card
+    //      Fix the Date in VideoDetail    
     state = {videos: [],selectedVideo: null};
 
     /*
@@ -39,7 +40,7 @@ class App extends Component {
                 }
             }
         );
-
+        console.log(response);
         const responseVids = response.data.items;
 
         this.setState({videos: responseVids});
