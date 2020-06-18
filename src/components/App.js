@@ -8,12 +8,10 @@ import VideoDetail from './VideoDetial';
 import './App.css';
 
 require('dotenv').config();
-console.log(process.env);
+
 
 class App extends Component {
-    // TODO
-    //      Comment -> Card
-    //      Fix the Date in VideoDetail    
+    // TODO   
     state = {videos: [],selectedVideo: null};
 
     /*
