@@ -1,13 +1,14 @@
 import React from 'react';
 import Faker from 'faker';
 
+import {connect} from 'react-redux';
 import './VideoDetail.css';
 
 import Comment from './Comment';
 
-const VideoDetail = ({selectedVid}) => {
+const VideoDetail = ({selectedVideo}) => {
     // if no selected video => render blank <iframe>
-    if (!selectedVid) {
+    if (!selectedVideo) {
         return (
             <div className="video-detail">
                 <div className="ui embed">
@@ -17,15 +18,15 @@ const VideoDetail = ({selectedVid}) => {
         );
     }
 
-    const src = `https://www.youtube.com/embed/${selectedVid.id.videoId}`;
+    const src = `https://www.youtube.com/embed/${selectedVideo.id.videoId}`;
 
     const publishDate = date => {
-        let dateString = selectedVid.snippet.publishedAt;
+        let dateString = selectedVideo.snippet.publishedAt;
         const indexOfT = dateString.indexOf('T');
-        dateString = dateString.substring(0,indexOfT);
-        const year = dateString.substring(0,4);
+        dateString = dateString.substring(0, indexOfT);
+        const year = dateString.substring(0, 4);
         dateString = dateString.substring(year.length + 1);
-        const month = dateString.substring(0,2);
+        const month = dateString.substring(0, 2);
         const day = dateString.substring(month.length + 1);
         dateString = new Date();
         return `${month} - ${day} - ${year}`;
@@ -40,8 +41,8 @@ const VideoDetail = ({selectedVid}) => {
                     </div>
                 </div>
                 <div className="ui segment">
-                    <h3>{selectedVid.snippet.title}</h3>
-                    <p>Published at: {publishDate(selectedVid.snippet.publishedAt)}</p>
+                    <h3>{selectedVideo.snippet.title}</h3>
+                    <p>Published at: {publishDate(selectedVideo.snippet.publishedAt)}</p>
                 </div>
                 <div className="ui segment">
                     <div className="ui relaxed list">
@@ -58,4 +59,8 @@ const VideoDetail = ({selectedVid}) => {
     );
 }
 
-export default VideoDetail;
+const mapStateToProps = state => {
+    return {selectedVideo: state.selectedVideo};
+}
+
+export default connect(mapStateToProps)(VideoDetail);

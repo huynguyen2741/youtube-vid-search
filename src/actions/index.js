@@ -19,8 +19,14 @@ export const getVideoList = searchTerm => async dispatch => {
     }
 }
 
-export const setSearchTerm = (searchTerm = null) => async dispatch =>
+export const setSearchTerm = (searchTerm = null) => dispatch =>
     dispatch({
         type: 'SET_SEARCHTERM',
         payload: searchTerm
+    })
+
+export const setSelectedVideo = (selectedVideo = null) => dispatch =>
+    dispatch({
+        type: 'SELECTED_VIDEO',
+        payload: selectedVideo
     })

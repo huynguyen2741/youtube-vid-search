@@ -79,7 +79,7 @@ class App extends Component {
 
                     <div className="ui row content">
                         <div className="eleven wide column">
-                            <VideoDetail selectedVid={this.state.selectedVideo} />
+                            <VideoDetail />
                         </div>
                         <div className="five wide column">
                             <VideoList />

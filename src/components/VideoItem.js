@@ -1,9 +1,13 @@
 import React from 'react';
 import './VideoItem.css';
 
-const VideoItem = ({vid,selectVideo}) => {
+import {connect} from 'react-redux';
+import {setSelectedVideo} from '../actions';
+
+const VideoItem = ({vid, selectedVideo, setSelectedVideo}) => {
+    // console.log(selectedVideo);
     return (
-        <div className="video-item item" onClick={() => {selectVideo(vid)}}>
+        <div className="video-item item" onClick={() => {setSelectedVideo(vid)}}>
             <img className="ui image" src={vid.snippet.thumbnails.medium.url} />
             <div className="content">
                 <div className="header">
@@ -17,4 +21,8 @@ const VideoItem = ({vid,selectVideo}) => {
     );
 }
 
-export default VideoItem;
+const mapStateToProps = state => {
+    return {selectedVideo: state.selectedVideo};
+}
+
+export default connect(mapStateToProps, {setSelectedVideo})(VideoItem);
