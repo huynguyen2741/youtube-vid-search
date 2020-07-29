@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 
 import SearchBar from './SearchBar';
@@ -11,42 +11,47 @@ require('dotenv').config();
 
 
 class App extends Component {
-    // TODO   
-    state = {videos: [],selectedVideo: null};
+    /* TODO   
+        - Fix VideoDetail
+        - Add Comment
+        - Add other pages.     
+    */
+
+    state = {videos: [], selectedVideo: null};
 
     /*
         After receive searchTerm from SearchBar
         Make GET request and get videos from youtube API's response 
         Set videos to state.to be used.
     */
-    termSubmit = async (searchTerm) => {
-        // look at sample.env for API_KEY
-        const API_KEY = process.env.REACT_APP_API_KEY;
+    // termSubmit = async (searchTerm) => {
+    //     // look at sample.env for API_KEY
+    //     const API_KEY = process.env.REACT_APP_API_KEY;
 
-        const connection = await axios.create({
-            baseURL: 'https://www.googleapis.com/youtube/v3'
-        });
+    //     const connection = await axios.create({
+    //         baseURL: 'https://www.googleapis.com/youtube/v3'
+    //     });
 
-        const response = await connection.get('/search',
-            {
-                params: {
-                    key: API_KEY,
-                    q: searchTerm,
-                    part: 'snippet',
-                    type: 'video',
-                    maxResults: 7
-                }
-            }
-        );
-        console.log(response);
-        const responseVids = response.data.items;
+    //     const response = await connection.get('/search',
+    //         {
+    //             params: {
+    //                 key: API_KEY,
+    //                 q: searchTerm,
+    //                 part: 'snippet',
+    //                 type: 'video',
+    //                 maxResults: 7
+    //             }
+    //         }
+    //     );
+    //     console.log(response);
+    //     const responseVids = response.data.items;
 
-        this.setState({videos: responseVids});
-    }
+    //     this.setState({videos: responseVids});
+    // }
 
-    selectVideo = (selectedVideo) => {
-        this.setState({selectedVideo: selectedVideo});
-    }
+    // selectVideo = (selectedVideo) => {
+    //     this.setState({selectedVideo: selectedVideo});
+    // }
 
     render() {
         // console.log(this.state.videos);
@@ -60,7 +65,8 @@ class App extends Component {
                             </div>
                         </div>
                         <div className="ten wide column">
-                            <SearchBar termSubmit={this.termSubmit} />
+                            {/* <SearchBar termSubmit={this.termSubmit} /> */}
+                            <SearchBar />
                         </div>
                         <div className="three wide column">
                             <div className="utilies">
@@ -76,7 +82,7 @@ class App extends Component {
                             <VideoDetail selectedVid={this.state.selectedVideo} />
                         </div>
                         <div className="five wide column">
-                            <VideoList vids={this.state.videos} selectVideo={this.selectVideo} />
+                            <VideoList />
                         </div>
 
                     </div>

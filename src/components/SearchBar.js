@@ -1,15 +1,23 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
+import {setSearchTerm, getVideoList} from '../actions';
 
 class SearchBar extends Component {
-    state = {searchTerm: null};
+    // state = {searchTerm: null};
 
+    //set search term everytime input is changed.
     inputChange = input => {
-        this.setState({searchTerm: input.target.value});
+
+        this.props.setSearchTerm(input.target.value);
+        // console.log(this.props.searchTerm);
     }
 
-    termSubmit = (event) => {
+    //subbmit searchTerm to getVideoList action and set the list to state.videoList
+    termSubmit = async event => {
         event.preventDefault();
-        this.props.termSubmit(this.state.searchTerm);
+        const response = await this.props.getVideoList(this.props.searchTerm);
+        // console.log(this.props.videoList);
     }
 
     render() {
@@ -28,4 +36,11 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+const mapStateToProps = state => {
+    return {
+        searchTerm: state.searchTerm,
+        videoList: state.videoList
+    };
+}
+
+export default connect(mapStateToProps, {setSearchTerm, getVideoList})(SearchBar);
