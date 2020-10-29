@@ -3,16 +3,27 @@ import Faker from 'faker';
 
 import {connect} from 'react-redux';
 import './VideoDetail.css';
+import videoList from './VideoList';
 
 import Comment from './Comment';
+import VideoList from './VideoList';
 
 const VideoDetail = ({selectedVideo}) => {
     // if no selected video => render blank <iframe>
     if (!selectedVideo) {
         return (
-            <div className="video-detail">
-                <div className="ui embed">
-                    <iframe src />
+            <div className="ui grid">
+                <div className="ui row content">
+                    <div className="eleven wide column">
+                        <div className="video-detail">
+                            <div className="ui embed">
+                                <iframe src />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="five wide column">
+                        <VideoList />
+                    </div>
                 </div>
             </div>
         );
@@ -33,26 +44,35 @@ const VideoDetail = ({selectedVideo}) => {
     }
 
     return (
-        <div className="video-detail">
-            <div className="ui segments">
-                <div className="ui segment">
-                    <div className="ui embed">
-                        <iframe src={src} />
+        <div className="ui grid">
+            <div className="ui row content">
+                <div className="eleven wide column">
+                    <div className="video-detail">
+                        <div className="ui segments">
+                            <div className="ui segment">
+                                <div className="ui embed">
+                                    <iframe src={src} />
+                                </div>
+                            </div>
+                            <div className="ui segment">
+                                <h3>{selectedVideo.snippet.title}</h3>
+                                <p>Published at: {publishDate(selectedVideo.snippet.publishedAt)}</p>
+                            </div>
+                            <div className="ui segment">
+                                <div className="ui relaxed list">
+                                    <Comment
+                                        avatar={Faker.image.avatar()}
+                                        content="Greate vids" />
+                                    <Comment
+                                        avatar={Faker.image.avatar()}
+                                        content="Awesome content" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="ui segment">
-                    <h3>{selectedVideo.snippet.title}</h3>
-                    <p>Published at: {publishDate(selectedVideo.snippet.publishedAt)}</p>
-                </div>
-                <div className="ui segment">
-                    <div className="ui relaxed list">
-                        <Comment
-                            avatar={Faker.image.avatar()}
-                            content="Greate vids" />
-                        <Comment
-                            avatar={Faker.image.avatar()}
-                            content="Awesome content" />
-                    </div>
+                <div className="five wide column">
+                    <VideoList />
                 </div>
             </div>
         </div>
@@ -60,7 +80,10 @@ const VideoDetail = ({selectedVideo}) => {
 }
 
 const mapStateToProps = state => {
-    return {selectedVideo: state.selectedVideo};
+    return {
+        selectedVideo: state.selectedVideo,
+        videoList: state.videoList
+    };
 }
 
 export default connect(mapStateToProps)(VideoDetail);

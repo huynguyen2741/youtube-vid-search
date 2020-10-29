@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
 
 import {setSearchTerm, getVideoList} from '../actions';
 
@@ -26,9 +27,11 @@ class SearchBar extends Component {
                 <form className="ui form" onSubmit={this.termSubmit}>
                     <div className="ui fluid icon input">
                         <input type="text" placeholder="Search" onChange={this.inputChange} />
-                        <button type="submit" className="ui button">
+                        {/* <Link to="/youtube-clone/"> */}
+                        <button type="submit" className="ui button" >
                             <i className="search icon" />
                         </button>
+                        {/* </Link> */}
                     </div>
                 </form>
             </div>
