@@ -17,8 +17,8 @@ const App = () => {
     return (
         <BrowserRouter>
             <Header />
-            <Route path='/youtube-clone/' exact component={VideoList} />
-            <Route path='/youtube-clone/detail' exact component={VideoDetail} />
+            <Route path='/' exact component={VideoList} />
+            <Route path='/detail' exact component={VideoDetail} />
         </BrowserRouter>
     );
 }
