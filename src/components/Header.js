@@ -8,7 +8,9 @@ export default () => {
                 <div className="ui row heading">
                     <div className="three wide column">
                         <div className="home icon">
-                            <button className="ui button">Youtube-clone</button>
+                            <a href="/youtube-clone">
+                                <button className="ui button">Youtube-clone</button>
+                            </a>
                         </div>
                     </div>
                     <div className="ten wide column">
