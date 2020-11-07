@@ -11,7 +11,7 @@ export const getVideoList = searchTerm => async dispatch => {
                 key: API_KEY,
                 type: 'video',
                 part: 'snippet',
-                maxResults: 20
+                maxResults: 3
             }
         });
 
