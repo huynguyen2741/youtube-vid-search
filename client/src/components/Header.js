@@ -1,31 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 import SearchBar from './SearchBar';
+import {Link} from 'react-router-dom';
 
-export default () => {
-    return (
-        <div className="main-content">
-            <div className="ui grid">
-                <div className="ui row heading">
-                    <div className="three wide column">
-                        <div className="home icon">
-                            <a href="/">
-                                <button className="ui button">Youtube-clone</button>
-                            </a>
+class Header extends Component {
+
+    renderSignInButton = () => {
+        return (
+            <Link to="/signin" className="ui button primary">
+                Sign In
+            </Link>
+        );
+    }
+
+    render() {
+        return (
+            <div className="main-content">
+                <div className="ui grid">
+                    <div className="ui row heading">
+                        <div className="three wide column">
+                            <div className="home icon">
+                                <a href="/">
+                                    <button className="ui button brown">Home Page</button>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div className="ten wide column">
-                        {/* <SearchBar termSubmit={this.termSubmit} /> */}
-                        <SearchBar />
-                    </div>
-                    <div className="three wide column">
-                        <div className="utilies">
-                            <div className="ui avatar">
-                                Sample account.
+                        <div className="nine wide column">
+                            {/* <SearchBar termSubmit={this.termSubmit} /> */}
+                            <SearchBar />
+                        </div>
+                        <div className="three wide column">
+                            <div className="utilies">
+                                <div>{this.renderSignInButton()}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div >
-    );
+            </div >
+        );
+    }
 }
+
+export default Header;

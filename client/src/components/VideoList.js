@@ -3,24 +3,9 @@ import {connect} from 'react-redux';
 
 import VideoItem from './VideoItem';
 
-// const VideoList = ({vids, selectVideo}) => {
-//     // console.log(vids);
-//     if (vids.length <= 0) {
-//         return (<p>Please enter some search input in the search bar</p>);
-//     }
-
-//     const vid_list = vids.map(vid => {
-//         return <VideoItem vid={vid} selectVideo={selectVideo} />;
-//     });
-
-//     return (
-//         <div className="ui selection list">
-//             {vid_list}
-//         </div>);
-// }
-
 class VideoList extends Component {
 
+    // render each vid into <VideoItem>
     vids = () => {
         const list = this.props.videoList;
         // console.log(this.props.videoList);
