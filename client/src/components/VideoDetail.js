@@ -2,11 +2,10 @@ import React from 'react';
 import Faker from 'faker';
 
 import {connect} from 'react-redux';
-import './VideoDetail.css';
 import videoList from './VideoList';
-
-import Comment from './Comment';
 import VideoList from './VideoList';
+
+import '../styles/VideoDetail.css';
 
 const VideoDetail = ({selectedVideo}) => {
     // console.log(selectedVideo);
@@ -16,7 +15,7 @@ const VideoDetail = ({selectedVideo}) => {
             <div className="ui grid">
                 <div className="ui row content">
                     <div className="eleven wide column">
-                        <div className="video-detail">
+                        <div className="video_detail">
                             <div className="ui embed">
                                 <iframe src />
                             </div>
@@ -60,14 +59,7 @@ const VideoDetail = ({selectedVideo}) => {
                                 <p>Published at: {publishDate(selectedVideo.snippet.publishedAt)}</p>
                             </div>
                             <div className="ui segment">
-                                <div className="ui relaxed list">
-                                    <Comment
-                                        avatar={Faker.image.avatar()}
-                                        content="Greate vids" />
-                                    <Comment
-                                        avatar={Faker.image.avatar()}
-                                        content="Awesome content" />
-                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,24 @@
+.forms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.signin_form {
+  margin-top: 10%;
+  border: 2px solid black;
+  width: 50em;
+  padding-bottom: 4px;
+}
+
+.signin_form input {
+  max-width: 50%;
+}
+
+.signin_form button {
+  width: 30%;
+}
+/*# sourceMappingURL=SignIn.css.map */

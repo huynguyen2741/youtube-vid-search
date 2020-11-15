@@ -23,7 +23,7 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <div className="search-bar ui">
+            <div className="search_bar ui">
                 <form className="ui form" onSubmit={this.termSubmit}>
                     <div className="ui fluid icon input">
                         <input type="text" placeholder="Search" onChange={this.inputChange} />

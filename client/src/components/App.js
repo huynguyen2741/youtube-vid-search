@@ -5,23 +5,27 @@ import axios from 'axios';
 
 import SearchBar from './SearchBar';
 import VideoList from './VideoList';
-import VideoDetail from './VideoDetial';
+import VideoDetail from './VideoDetail';
 import SignIn from './SignIn';
+import CreateUser from './CreateUser';
 
 import Header from './Header';
 
-import './App.css';
+import '../styles/App.css';
 
 require('dotenv').config();
 
 const App = () => {
     return (
         <BrowserRouter>
-            <div>
+            <div className="content">
                 <Header />
-                <Route path='/' exact component={VideoList} />
-                <Route path='/detail' exact component={VideoDetail} />
-                <Route path='/signin' exact component={SignIn} />
+                <div className="main_content">
+                    <Route path='/' exact component={VideoList} />
+                    <Route path='/detail' exact component={VideoDetail} />
+                    <Route path='/signin' exact component={SignIn} />
+                    <Route path='/createuser' exact component={CreateUser} />
+                </div>
             </div>
         </BrowserRouter>
     );

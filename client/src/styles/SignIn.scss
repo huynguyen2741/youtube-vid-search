@@ -1,0 +1,19 @@
+.forms {
+    display: flex;
+    justify-content: center;
+}
+
+.signin_form {
+    margin-top: 10%;
+    border: 2px solid black;
+    width: 50em;
+    padding-bottom: 4px;
+
+    input {
+        max-width: 50%;
+    }
+
+    button {
+        width: 30%;
+    }
+}

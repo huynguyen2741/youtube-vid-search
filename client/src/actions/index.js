@@ -3,7 +3,7 @@ import axios from 'axios';
 import pageServer from '../api/pageServer';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const server = axios.connec
+
 
 export const getVideoList = searchTerm => async dispatch => {
     // console.log('searchterm' + searchTerm);
@@ -41,11 +41,23 @@ export const setSelectedVideo = (selectedVideo) => dispatch => {
         if sign in pass, return what type of payload
         if error, how to handle the error 
 */
-export const signIn = formValues => (dispatch, getState) => {
-    const response = pageServer.post('/signin', formValues);
+export const signIn = formValues => async (dispatch, getState) => {
+    const response = await pageServer.post('/signin', formValues);
 
     dispatch({
         type: 'SIGN_IN',
         payload: response.data
     });
+}
+
+export const createUser = formValues => async (dispatch, getState) => {
+    console.log(formValues);
+    const response = await pageServer.post('/createuser', formValues);
+
+    console.log(response.data);
+
+    // dispatch({
+    //     type: 'SIGN_IN',
+    //     payload: response.data
+    // });
 }

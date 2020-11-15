@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import SearchBar from './SearchBar';
 import {Link} from 'react-router-dom';
 
+// import './App.css';
+
 class Header extends Component {
 
     renderSignInButton = () => {
@@ -14,14 +16,14 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="main-content">
+            <div className="header">
                 <div className="ui grid">
                     <div className="ui row heading">
                         <div className="three wide column">
                             <div className="home icon">
-                                <a href="/">
-                                    <button className="ui button brown">Home Page</button>
-                                </a>
+                                {/* <a href="/"> */}
+                                <Link to="/" className="ui button brown">Home Page</Link>
+                                {/* </a> */}
                             </div>
                         </div>
                         <div className="nine wide column">

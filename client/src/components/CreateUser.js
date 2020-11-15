@@ -9,13 +9,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
-import {signIn} from '../actions';
-import {Link} from 'react-router-dom';
+import {createUser} from '../actions';
 
 import '../styles/SignIn.css';
 
 
-class SignIn extends Component {
+class CreateUser extends Component {
     renderField = ({input, label, meta}) => {
         return (
             <div className="field">
@@ -35,18 +34,18 @@ class SignIn extends Component {
     }
 
     onSubmit = (formValues) => {
-        this.props.signIn(formValues);
+        this.props.createUser(formValues);
     }
 
     render() {
         return (
             <div className="forms ui form error">
-                <form className="signin_form" onSubmit={this.onSubmit}>
-                    <h2>Sign In</h2>
+                <form className="signin_form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                    <h2>Sign Up Form</h2>
                     <Field name="username" label="User Name:" component={this.renderField} />
                     <Field name="password" label="Password:" component={this.renderField} />
-                    <button className="ui blue button" type="submit">Sign In</button>
-                    <Link to="/createuser" >Create User</Link>
+                    <Field name="c_password" label="Confirm Password:" component={this.renderField} />
+                    <button className="ui blue button" type="submit">Create User</button>
                 </form>
             </div>
         );
@@ -62,10 +61,13 @@ const validate = (formValues) => {
     if (!formValues.password) {
         error.password = 'Please enter password'
     };
+    if ((formValues.password) !== (formValues.c_password)) {
+        error.c_password = 'Confirm password does not match';
+    };
 
     return error;
 }
 
-const reduxFormConnect = reduxForm({form: "signinForm", validate: validate})(SignIn);
+const reduxFormConnect = reduxForm({form: "createForm", validate: validate})(CreateUser);
 
-export default connect(null, {signIn})(reduxFormConnect);
+export default connect(null, {createUser})(reduxFormConnect);

@@ -1,0 +1,30 @@
+.video_item {
+    display: flex;
+    margin-left: 3px;
+    text-align: left;
+}
+
+.video_item a {
+    padding-left: 5px;
+    width: 100%;
+}
+
+.video_item .video_content {
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.video_content.header {
+    color: blue;
+}
+
+.video_item a .header,
+.description {
+    font-weight: bold;
+    font-size: large;
+}
+
+.video_item.item img {
+    max-width: 10%;
+    display: inline-block;
+}

@@ -1,0 +1,15 @@
+.content {
+  display: -ms-grid;
+  display: grid;
+  padding: 2px;
+  margin-bottom: 3px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 3px;
+  border-bottom: 0.5px solid lightgray;
+}
+/*# sourceMappingURL=App.css.map */

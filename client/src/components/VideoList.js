@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import VideoItem from './VideoItem';
 
 class VideoList extends Component {
+    componentDidMount() {
+        this.vids();
+    }
 
     // render each vid into <VideoItem>
     vids = () => {
@@ -21,7 +24,7 @@ class VideoList extends Component {
 
     render() {
         return (
-            <div className="ui selection list" >
+            <div className="ui celled list" >
                 {this.vids()}
             </div>
         );
