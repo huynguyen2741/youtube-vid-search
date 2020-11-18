@@ -1,24 +1,32 @@
 const express = require('express');
+const User = require('../models/User');
 
-exports.postCreateUser = (req, res, next) => {
+
+/* POST:create one user
+        check if user exist with same username
+            yes -> return the user existed.
+            no -> insert the new user into the database.
+*/
+exports.postCreateUser = async (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
-    console.log(req.body.username);
 
-    const user = new User(username, password);
+    let user = new User();
+    const validateResult = await user.validateUserExist(username, password);
+    if (validateResult) {
+        res.json({userExisted: true});
+    }
+    else {
+        user.username = username
+        user.password = password;
+        const result = await user.createUser();
+        // console.log(result);
+        res.send(result);
+    }
 
-    user.createUser();
-    res.redirect('/createuser1');
-    return;
 }
 
 exports.getCreateUser = (req, res, next) => {
-    // const username = req.body.username;
-    // const password = req.body.password;
-
-    // const user = new User(username, password);
-
-    // user.createUser();
     res.send(req.body);
     return;
 }

@@ -1,8 +1,8 @@
-export default (vids = [], action) => {
+export default (state = [], action) => {
     switch (action.type) {
         case 'GET_VIDEOS':
             return action.payload;
         default:
-            return vids;
+            return state;
     }
 }

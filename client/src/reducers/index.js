@@ -11,6 +11,6 @@ export default combineReducers({
     videoList: videoListReducer,
     searchTerm: searchTermReducer,
     selectedVideo: selectedVideoReducer,
-    auth: authReducer,
+    user: authReducer,
     form: formReducer
 });

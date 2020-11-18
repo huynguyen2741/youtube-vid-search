@@ -1,6 +1,7 @@
 import youtube from '../api/youtube'
 import axios from 'axios';
 import pageServer from '../api/pageServer';
+import history from '../history';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -50,14 +51,19 @@ export const signIn = formValues => async (dispatch, getState) => {
     });
 }
 
-export const createUser = formValues => async (dispatch, getState) => {
-    console.log(formValues);
+// create and return data of new user.
+export const createUser = (formValues) => async (dispatch, getState) => {
     const response = await pageServer.post('/createuser', formValues);
 
-    console.log(response.data);
+    if (response.data.userExisted) {
+        window.alert("User alreayd exist. Please change to new username");
+    }
 
-    // dispatch({
-    //     type: 'SIGN_IN',
-    //     payload: response.data
-    // });
+    else {
+        dispatch({
+            type: 'CREATE_USER',
+            payload: response.data
+        });
+        history.push('/');
+    }
 }

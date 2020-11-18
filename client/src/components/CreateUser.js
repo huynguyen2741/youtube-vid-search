@@ -33,7 +33,8 @@ class CreateUser extends Component {
         }
     }
 
-    onSubmit = (formValues) => {
+    // submit the form value to the action to create state.
+    onSubmit = async (formValues) => {
         this.props.createUser(formValues);
     }
 
@@ -64,7 +65,6 @@ const validate = (formValues) => {
     if ((formValues.password) !== (formValues.c_password)) {
         error.c_password = 'Confirm password does not match';
     };
-
     return error;
 }
 
