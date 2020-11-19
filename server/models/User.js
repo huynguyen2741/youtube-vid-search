@@ -11,17 +11,16 @@ class User {
         this.password = password;
     }
 
-    // insert new user into database
-    // return what ?
+    /*
+        Insert the user info into the datatbase.
+    */
     createUser = async () => {
         try {
             db = await connection.getDatabase();
             if (db) {
                 const collection = await db.collection('User');
                 const result = await collection.insertOne(this);
-                // console.log("success create");
-                const user = await this.getUser(this.username);
-                return user;
+                return;
             }
             else {
                 return 'Fail to create the user';
@@ -34,15 +33,18 @@ class User {
 
     }
 
+
+    // retrieve user info from the database based on the username.
     getUser = async (username) => {
         db = await connection.getDatabase();
         const collection = await db.collection('User');
         const cursor = await collection.find({username: username});
-        return (cursor.next());
+        const user_data = await cursor.next();
+        return (user_data);
     }
 
     // validate if there is account with same username.
-    validateUserExist = async (username, password) => {
+    validateUserExist = async (username) => {
         let result = false;
         try {
             db = await connection.getDatabase();
@@ -50,9 +52,10 @@ class User {
                 const collection = await db.collection('User');
                 const cursor = await collection.find({username: username});
                 if (await cursor.count() > 0) {
-                    console.log('found');
+                    console.log('User-validateUserExist: found');
                     result = true;
                 }
+                else {console.log('User-validateUserExist: NO');}
                 return result;
             }
             else {
@@ -65,4 +68,5 @@ class User {
         }
     }
 }
+
 module.exports = User;

@@ -6,6 +6,6 @@ const userController = require('../controllers/user');
 // router.use(cors());
 
 router.post('/createuser', userController.postCreateUser);
-router.get('/createuser', userController.getCreateUser);
+router.post('/signin', userController.postSignIn);
 
 module.exports = router;
