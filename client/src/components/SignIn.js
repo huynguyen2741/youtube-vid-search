@@ -35,18 +35,21 @@ class SignIn extends Component {
     }
 
     onSubmit = (formValues) => {
-        this.props.signIn(formValues);
+        this.props.signIn(formValues)
+        // this.props.signIn();
     }
 
     render() {
         return (
             <div className="forms ui form error">
-                <form className="signin_form" onSubmit={this.onSubmit}>
+                <form className="signin_form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
                     <h2>Sign In</h2>
                     <Field name="username" label="User Name:" component={this.renderField} />
                     <Field name="password" label="Password:" component={this.renderField} />
                     <button className="ui blue button" type="submit">Sign In</button>
-                    <Link to="/createuser" >Create User</Link>
+                    <br />
+                    <hr />
+                    <Link to="/createuser" className="ui brown button" >Create User</Link>
                 </form>
             </div>
         );

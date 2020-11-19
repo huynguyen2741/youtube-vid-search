@@ -7,10 +7,18 @@
 */
 import React from 'react';
 
-export default (state = null, action) => {
+const INITIAL_STATE = {
+    signedIn: null,
+}
+
+export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'CREATE_USER':
-            return {...action.payload};
+            return {...action.payload, signedIn: true};
+        case 'SIGN_IN':
+            return {...action.payload, signedIn: true};
+        case 'SIGN_OUT':
+            return {signedIn: false};
         default:
             return state;
     }

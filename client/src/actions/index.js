@@ -5,9 +5,8 @@ import history from '../history';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-
+// get the list of video from the Youtube Search API
 export const getVideoList = searchTerm => async dispatch => {
-    // console.log('searchterm' + searchTerm);
     if (searchTerm != null) {
         const response = await youtube.get('/search', {
             params: {
@@ -15,7 +14,7 @@ export const getVideoList = searchTerm => async dispatch => {
                 key: API_KEY,
                 type: 'video',
                 part: 'snippet',
-                maxResults: 3
+                maxResults: 20
             }
         });
 
@@ -38,16 +37,30 @@ export const setSelectedVideo = (selectedVideo) => dispatch => {
 }
 
 /*
-    TODO:
-        if sign in pass, return what type of payload
-        if error, how to handle the error 
+    SIGNIN:
+        validate if the user with username and password exist
+            YES => return payload
+            NO => alert the user to enter correct info.
 */
 export const signIn = formValues => async (dispatch, getState) => {
     const response = await pageServer.post('/signin', formValues);
+    // console.log(response.data.correctUser);
+    if (!response.data.correctUser) {
+        window.alert("Username or Password is incorrect. Please try again");
+    }
+    else {
+        dispatch({
+            type: 'SIGN_IN',
+            payload: response.data
+        });
+        history.push('/');
+    }
+}
 
+
+export const signOut = () => dispatch => {
     dispatch({
-        type: 'SIGN_IN',
-        payload: response.data
+        type: 'SIGN_OUT'
     });
 }
 

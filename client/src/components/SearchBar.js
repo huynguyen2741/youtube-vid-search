@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
 import {setSearchTerm, getVideoList} from '../actions';
+import history from '../history';
 
 class SearchBar extends Component {
     // state = {searchTerm: null};
@@ -18,6 +19,7 @@ class SearchBar extends Component {
     termSubmit = async event => {
         event.preventDefault();
         const response = await this.props.getVideoList(this.props.searchTerm);
+        history.push('/');
         // console.log(this.props.videoList);
     }
 

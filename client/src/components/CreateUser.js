@@ -34,7 +34,7 @@ class CreateUser extends Component {
     }
 
     // submit the form value to the action to create state.
-    onSubmit = async (formValues) => {
+    onSubmit = (formValues) => {
         this.props.createUser(formValues);
     }
 
