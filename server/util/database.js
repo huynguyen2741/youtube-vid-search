@@ -1,7 +1,10 @@
 const mongodb = require('mongodb');
+require('dotenv').config();
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
 
 const client = mongodb.MongoClient;
-let url = 'mongodb+srv://huynguyen2741:Lancier1007@cluster0-nyb3o.mongodb.net/test?retryWrites=true&w=majority';
+let url = `mongodb+srv://${username}:${password}@cluster0-nyb3o.mongodb.net/test?retryWrites=true&w=majority`;
 
 let _database;
 
