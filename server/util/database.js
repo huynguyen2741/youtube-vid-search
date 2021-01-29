@@ -1,7 +1,8 @@
 const mongodb = require('mongodb');
-require('dotenv').config();
-const username = process.env.USERNAME;
-const password = process.env.PASSWORD;
+
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
+
 
 const client = mongodb.MongoClient;
 let url = `mongodb+srv://${username}:${password}@cluster0-nyb3o.mongodb.net/test?retryWrites=true&w=majority`;
@@ -12,7 +13,7 @@ const databaseConnect = async (callback) => {
     try {
         const connection = await client.connect(url, {useUnifiedTopology: true});
         _database = connection.db('Video');
-        console.log("connected");
+        console.log("connected to database");
         callback();
     }
     catch (e) {

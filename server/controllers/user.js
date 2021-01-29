@@ -46,6 +46,7 @@ exports.postSignIn = async (req, res, next) => {
             result_data = {...result_data, correctUser: true}
             res.json(result_data);
         }
+        res.json({correctUser: false})
     }
     else {
         res.json({correctUser: false})
