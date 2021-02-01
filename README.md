@@ -2,6 +2,8 @@
 
 To start the program, please make sure you have npm and node installed. 
 
-Once clone or download the code, please run this command in the command line to start.
+Once clone or download the code, please run these command in the command lines to start.
 
-npm run dev 
+  npm install 
+
+  npm run dev 
