@@ -1,13 +1,19 @@
 # youtube-vid-search
 
-To view the static page, please follow this link : https://utube-vid-search.netlify.app/
+ . To view the static page, please follow this link : https://utube-vid-search.netlify.app/
+  
+ . To have as a dynamic page:
 
-To have a 
+      Please make sure you have npm and node installed. 
 
-To start the program, please make sure you have npm and node installed. 
+      Once clone or download the code, please run these command in the command lines to start.
 
-Once clone or download the code, please run these command in the command lines to start.
+            a) The first time using the program:
+               
+                npm install 
+               
+                npm run init
+               
+            b) After the firs time, run this to start the program:
 
-  npm install 
-
-  npm run dev 
+                npm run dev 
