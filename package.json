@@ -8,8 +8,9 @@
     "server": "cd server  && npm start",
     "client": "cd client && npm start",
     "init-client": "cd client && npm install && npm start",
+    "init-server": "cd server && npm install && npm start",
     "dev": "concurrently \"npm run client\" \"npm run server\" ",
-    "first": "concurrenly \"npm run init-client\" \"npm run server\""
+    "first": "concurrently \"npm run init-client\" \"npm run init-server\""
   },
   "repository": {
     "type": "git",
